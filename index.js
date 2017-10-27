@@ -17,7 +17,7 @@ function replyImage(event) {
 
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-    var msg = event.message.text;
+    //var msg = event.message.text;
     // event.reply(msg).then(function(data) {
     //   // success
     //   console.log(event);
@@ -26,7 +26,11 @@ bot.on('message', function(event) {
     //   // error
     //   console.log('error');
     // });
-    replyImage(event);
+    replyImage(event).then(function(data) {
+      console.log(event);
+    }).catch(function(error) {
+      console.error(error);
+    });
   }
 });
 
