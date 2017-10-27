@@ -8,7 +8,9 @@ var bot = linebot({
   channelAccessToken: "r+J3CKuHvZtW1x5eHCHM3z3SFnbGHbmFarHEpwm+TzPpE/swi54ye6l1DT8pe6leZe0fcSiMVO6ScXZpxft9TfnOpNQwc3mOdscmQW3IYYY0w+bK2sf5vUWaC6MNPtzgxNoqD/e9Y2xTX25eaov3FgdB04t89/1O/w1cDnyilFU="
 });
 
+
 function replyImage(event) {
+
   event.reply({
       type: 'image',
       originalContentUrl: 'https://i.imgur.com/MqTALfj.jpg',
@@ -16,21 +18,13 @@ function replyImage(event) {
       // type: 'sticker',
       // packageId: '1',
       // stickerId: '1'
-  });
+  }).then(() => {console.log("yoyo");});
 }
 
 bot.on('message', function(event) {
   console.log(event);
   if (event.message.type == 'text') {
-    //var msg = event.message.text;
-    // event.reply(msg).then(function(data) {
-    //   // success
-    //   console.log(event);
-    //   console.log(msg);
-    // }).catch(function(error) {
-    //   // error
-    //   console.log('error');
-    // });
+
     replyImage(event);
   }
 });
