@@ -102,13 +102,17 @@ function revise(searchText = '', reviseText) {
 bot.on('message', function(event) {
   console.log(event);
   if (event.message.type == 'text') {
-    let input = event.message.text.split(" ");
-    if(input[0] === "@") {
-      let cmd = input[1].split("：");
+    let msg = event.message.text;
 
-      revise(cmd[0], cmd[1]);
+    if(msg[0] === "@") {
+      let cmd = msg.substring(1).split("：");
+
+      revise(cmd[0], cmd[1]).then(reply => {
+          replyImage(event);
+      });
     }
-    replyImage(event);
+    else
+      replyImage(event);
   }
 });
 
