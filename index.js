@@ -10,14 +10,14 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
-    event.reply(msg).then(function(data) {
-      // success
-      console.log(event);
-      console.log(msg);
-    }).catch(function(error) {
-      // error
-      console.log('error');
-    });
+    // event.reply(msg).then(function(data) {
+    //   // success
+    //   console.log(event);
+    //   console.log(msg);
+    // }).catch(function(error) {
+    //   // error
+    //   console.log('error');
+    // });
 
     event.reply({
       type: 'location',
@@ -25,7 +25,7 @@ bot.on('message', function(event) {
       address: '〒150-0002 東京都渋谷区渋谷２丁目２１−１',
       latitude: 35.65910807942215,
       longitude: 139.70372892916203
-  });
+    });
   }
 });
 
