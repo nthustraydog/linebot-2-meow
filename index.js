@@ -102,6 +102,9 @@ function revise(searchText = '', reviseText) {
 bot.on('message', function(event) {
   console.log(event);
   if (event.message.type == 'text') {
+    let input = event.message.text.split(" ");
+    if(input[0] === "修改：")
+      console.log("Ready for revising...");
     replyImage(event);
   }
 });
