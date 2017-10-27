@@ -13,8 +13,8 @@ function replyImage(event) {
       // originalContentUrl: 'https://i.imgur.com/MqTALfj.jpg',
       // previewImageUrl: 'https://i.imgur.com/MqTALfj.jpg'
       type: 'sticker',
-      packageId: '7834',
-      stickerId: '14704205'
+      packageId: '1',
+      stickerId: '1'
   });
 }
 
