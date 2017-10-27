@@ -17,7 +17,7 @@ function replyImage(event) {
 
 bot.on('message', function(event) {
   console.log(event);
-  if (event.message.type = 'text') {
+  if (event.message.type == 'text') {
     //var msg = event.message.text;
     // event.reply(msg).then(function(data) {
     //   // success
