@@ -11,13 +11,21 @@ var bot = linebot({
 });
 
 
-function replyImage(event) {
-  searchReply(event.message.text).then(text => {
+function replyImage(event, reviseText = '') {
+  if(reviseText) {
     event.reply({
         type: 'text',
-        text: text
+        text: reviseText
     });
-  });
+  }
+  else {
+    searchReply(event.message.text).then(text => {
+      event.reply({
+          type: 'text',
+          text: text
+      });
+    });
+  }
 }
 
 function searchReply(msg) {
@@ -108,7 +116,7 @@ bot.on('message', function(event) {
       let cmd = msg.substring(1).split("：");
 
       revise(cmd[0], cmd[1]).then(reply => {
-          console.log("好ㄨ好ㄨ 知道了");
+          replyImage(event, "好的好的 知道了");
       });
     }
     else
