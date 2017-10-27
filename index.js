@@ -7,6 +7,14 @@ var bot = linebot({
   channelAccessToken: "r+J3CKuHvZtW1x5eHCHM3z3SFnbGHbmFarHEpwm+TzPpE/swi54ye6l1DT8pe6leZe0fcSiMVO6ScXZpxft9TfnOpNQwc3mOdscmQW3IYYY0w+bK2sf5vUWaC6MNPtzgxNoqD/e9Y2xTX25eaov3FgdB04t89/1O/w1cDnyilFU="
 });
 
+function replyImage(event) {
+  event.reply({
+      type: 'image',
+      originalContentUrl: 'https://i.imgur.com/MqTALfj.jpg',
+      previewImageUrl: 'https://i.imgur.com/MqTALfj.jpg'
+  });
+}
+
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
@@ -18,14 +26,7 @@ bot.on('message', function(event) {
     //   // error
     //   console.log('error');
     // });
-
-    event.reply({
-      type: 'location',
-      title: 'my location',
-      address: '〒150-0002 東京都渋谷区渋谷２丁目２１−１',
-      latitude: 35.65910807942215,
-      longitude: 139.70372892916203
-    });
+    replyImage(event);
   }
 });
 
