@@ -111,7 +111,9 @@ bot.on('message', function(event) {
   console.log(event);
   if (event.message.type == 'text') {
     let msg = event.message.text;
+
     searchReply("閉嘴").then(text => {
+      console.log(text);
         if(text === "0") {
           if(msg === "閉嘴")
             revise("閉嘴", "1");
