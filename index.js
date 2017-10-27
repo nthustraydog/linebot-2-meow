@@ -108,7 +108,7 @@ bot.on('message', function(event) {
       let cmd = msg.substring(1).split("：");
 
       revise(cmd[0], cmd[1]).then(reply => {
-          replyImage(event);
+          console.log("好ㄨ好ㄨ 知道了");
       });
     }
     else
