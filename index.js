@@ -12,14 +12,11 @@ function replyImage(event) {
       type: 'image',
       originalContentUrl: 'https://i.imgur.com/MqTALfj.jpg',
       previewImageUrl: 'https://i.imgur.com/MqTALfj.jpg'
-  }).then(function(data) {
-    console.log(event);
-  }).catch(function(error) {
-    console.error(error);
   });
 }
 
 bot.on('message', function(event) {
+  console.log(event);
   if (event.message.type = 'text') {
     //var msg = event.message.text;
     // event.reply(msg).then(function(data) {
