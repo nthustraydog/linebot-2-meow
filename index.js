@@ -103,8 +103,11 @@ bot.on('message', function(event) {
   console.log(event);
   if (event.message.type == 'text') {
     let input = event.message.text.split(" ");
-    if(input[0] === "修改：")
-      console.log("Ready for revising...");
+    if(input[0] === "修改：") {
+      let cmd = input.split(",");
+
+      revise(cmd[0], cmd[1]);
+    }
     replyImage(event);
   }
 });
