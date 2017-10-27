@@ -111,16 +111,26 @@ bot.on('message', function(event) {
   console.log(event);
   if (event.message.type == 'text') {
     let msg = event.message.text;
+    searchReply("閉嘴").then(text => {
+        if(text === "0") {
+          if(msg === "閉嘴")
+            revise("閉嘴", "1");
+          else if(msg === "啟動")
+            revise("閉嘴", "0").then(reply => {
+                replyImage(event, "我醒來了～");
+            });
+          else if(msg[0] === "@") {
+            let cmd = msg.substring(1).split("：");
 
-    if(msg[0] === "@") {
-      let cmd = msg.substring(1).split("：");
+            revise(cmd[0], cmd[1]).then(reply => {
+                replyImage(event, "好的好的 知道了");
+            });
+          }
+          else
+            replyImage(event);
+        }
+    });
 
-      revise(cmd[0], cmd[1]).then(reply => {
-          replyImage(event, "好的好的 知道了");
-      });
-    }
-    else
-      replyImage(event);
   }
 });
 

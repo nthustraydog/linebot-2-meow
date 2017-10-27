@@ -18,5 +18,9 @@
   {
     "text": "Help",
     "replyText": "在聊天室內對我下指令\n範例：@語句：回覆"
+  },
+  {
+    "text": "閉嘴",
+    "replyText": "0"
   }
 ]
