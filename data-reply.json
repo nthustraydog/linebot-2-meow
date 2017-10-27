@@ -2,5 +2,13 @@
   {
     "text": "嗨",
     "replyText": "有何吩咐？"
+  },
+  {
+    "text": "你的名字",
+    "replyText": "喵喵"
+  },
+  {
+    "text": "誰製造你的",
+    "replyText": "CCH"
   }
 ]
