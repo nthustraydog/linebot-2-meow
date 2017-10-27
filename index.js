@@ -126,6 +126,7 @@ bot.on('message', function(event) {
           }
           else
             replyImage(event);
+            
         }
         else{
            if(msg === "啟動")
