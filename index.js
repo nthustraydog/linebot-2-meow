@@ -9,9 +9,12 @@ var bot = linebot({
 
 function replyImage(event) {
   event.reply({
-      type: 'image',
-      originalContentUrl: 'https://i.imgur.com/MqTALfj.jpg',
-      previewImageUrl: 'https://i.imgur.com/MqTALfj.jpg'
+      // type: 'image',
+      // originalContentUrl: 'https://i.imgur.com/MqTALfj.jpg',
+      // previewImageUrl: 'https://i.imgur.com/MqTALfj.jpg'
+      type: 'sticker',
+      packageId: '1',
+      stickerId: '1'
   });
 }
 
