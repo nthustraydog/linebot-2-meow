@@ -12,6 +12,10 @@ function replyImage(event) {
       type: 'image',
       originalContentUrl: 'https://i.imgur.com/MqTALfj.jpg',
       previewImageUrl: 'https://i.imgur.com/MqTALfj.jpg'
+  }).then(function(data) {
+    console.log(event);
+  }).catch(function(error) {
+    console.error(error);
   });
 }
 
@@ -26,11 +30,7 @@ bot.on('message', function(event) {
     //   // error
     //   console.log('error');
     // });
-    replyImage(event).then(function(data) {
-      console.log(event);
-    }).catch(function(error) {
-      console.error(error);
-    });
+    replyImage(event);
   }
 });
 
