@@ -102,7 +102,6 @@ function revise(searchText = '', reviseText) {
 bot.on('message', function(event) {
   console.log(event);
   if (event.message.type == 'text') {
-    revise(event.message.text, "456");
     replyImage(event);
   }
 });
