@@ -1,6 +1,8 @@
 var linebot = require('linebot');
 var express = require('express');
-var fs = require('fs');
+const fs = require('fs');
+const uuid = require('uuid/v4');
+const moment = require('moment');
 
 var bot = linebot({
   channelId: 1542917941,
@@ -10,21 +12,97 @@ var bot = linebot({
 
 
 function replyImage(event) {
+  searchReply(event.message.text).then(text => {
+    event.reply({
+        type: 'text',
+        text: text
+    });
+  });
+}
 
-  event.reply({
-      type: 'image',
-      originalContentUrl: 'https://i.imgur.com/MqTALfj.jpg',
-      previewImageUrl: 'https://i.imgur.com/MqTALfj.jpg'
-      // type: 'sticker',
-      // packageId: '1',
-      // stickerId: '1'
-  }).then(data => {console.log("yoyo");});
+function searchReply(msg) {
+  return new Promise((resolve, reject) => {
+    if(!fs.existsSync('data-reply.json')) {
+      fs.writeFileSync('data-reply', '');
+    }
+
+    fs.readFile('data-reply.json', 'utf8', (err, data) => {
+        if (err) reject(err);
+
+        let reply = data ? JSON.parse(data) : [];
+        let exist = false;
+        let text = '本喵不懂你/妳在說啥～';
+
+        if (reply.length > 0) {
+            reply = reply.filter(t => {
+                if(t.text == msg) {
+                  text = t.replyText;
+                }
+                return t.text == msg;
+            });
+        }
+
+        resolve(text);
+    });
+  });
+}
+
+function list(searchText = '') {
+  return new Promise((resolve, reject) => {
+    if(!fs.existsSync('data-reply.json')) {
+      fs.writeFileSync('data-reply', '');
+    }
+
+    fs.readFile('data-reply.json', 'utf8', (err, data) => {
+        if (err) reject(err);
+
+        let reply = data ? JSON.parse(data) : [];
+
+
+        if (reply.length > 0 && searchText) {
+            reply = reply.filter(t => {
+                return t.text.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+            });
+        }
+
+        resolve(reply);
+    });
+  });
+}
+
+function revise(searchText = '', reviseText) {
+  return new Promise((resolve, reject) => {
+    let exist = false;
+    const newReply = {
+      text: searchText,
+      replyText: reviseText
+    };
+
+    list().then(reply => {
+      reply = reply.map(t => {
+        if(t.text === searchText){
+            t.replyText = reviseText;
+            exist = true;
+          }
+        return t;
+      });
+
+      if(!exist)
+          reply.push(newReply);
+
+      fs.writeFile('data-reply.json', JSON.stringify(reply), err => {
+        if(err) reject(err);
+
+        resolve(reply);
+      });
+    });
+  });
 }
 
 bot.on('message', function(event) {
   console.log(event);
   if (event.message.type == 'text') {
-
+    revise(event.message.text, "456");
     replyImage(event);
   }
 });
