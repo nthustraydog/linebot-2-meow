@@ -18,7 +18,7 @@ function replyImage(event) {
       // type: 'sticker',
       // packageId: '1',
       // stickerId: '1'
-  }).then(() => {console.log("yoyo");});
+  }).then(data => {console.log("yoyo");});
 }
 
 bot.on('message', function(event) {
