@@ -31,7 +31,7 @@ function replyImage(event, reviseText = '') {
 function searchReply(msg) {
   return new Promise((resolve, reject) => {
     if(!fs.existsSync('data-reply.json')) {
-      fs.writeFileSync('data-reply', '');
+      fs.writeFileSync('data-reply.json', '');
     }
 
     fs.readFile('data-reply.json', 'utf8', (err, data) => {
@@ -59,7 +59,6 @@ function list(searchText = '') {
   return new Promise((resolve, reject) => {
     if(!fs.existsSync('data-reply.json')) {
       fs.writeFileSync('data-reply.json', '');
-      console.log(1156456);
     }
 
     fs.readFile('data-reply.json', 'utf8', (err, data) => {
