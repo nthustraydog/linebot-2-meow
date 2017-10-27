@@ -104,7 +104,7 @@ bot.on('message', function(event) {
   if (event.message.type == 'text') {
     let input = event.message.text.split(" ");
     if(input[0] === "@") {
-      let cmd = input[1].split(":");
+      let cmd = input[1].split("：");
 
       revise(cmd[0], cmd[1]);
     }
